@@ -21,5 +21,5 @@ jobs:
         # 'ssh-add <<< "$SECRET_KEY"'
         # ssh-add -l
         rev <<< "$M_SECRET"
-        rev <<< ${{ secrets.MULTI_LINE }}
+        rev <<< "${{ secrets.MULTI_LINE }}"
 
