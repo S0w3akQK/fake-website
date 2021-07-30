@@ -14,6 +14,8 @@ jobs:
     - name: Use secret key
       run: |
         eval "$(ssh-agent -s)"
-        ssh-add <<< "${{ secrets.DEPLOY_KEY }}"
+        umask 077
+        echo "${{ secrets.DEPLOY_KEY }}" > ${{ runner.temp }}/key
+        ssh-add ${{ runner.temp }}/key
         ssh-add -l
 
