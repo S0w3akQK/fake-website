@@ -1,0 +1,19 @@
+name: test key
+
+on:
+  push:
+
+jobs:
+
+  testing:
+    name: testing
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Use secret key
+      run: |
+        eval "$(ssh-agent -s)"
+        ssh-add <<< ${{ secrets.DEPLOY_KEY }}
+        ssh-add -l
+
