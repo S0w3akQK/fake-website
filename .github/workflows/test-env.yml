@@ -13,13 +13,9 @@ jobs:
 
     - name: Use secret key
       env:
-        # SECRET_KEY: "${{ secrets.DEPLOY_KEY }}"
-        M_SECRET: ${{ secrets.MULTI_LINE }}
+        SECRET_KEY: "${{ secrets.DEPLOY_KEY }}"
       run: |
-        # eval "$(ssh-agent -s)"
-        # umask 077
-        # 'ssh-add <<< "$SECRET_KEY"'
-        # ssh-add -l
-        rev <<< "$M_SECRET"
-        rev <<< "${{ secrets.MULTI_LINE }}"
+        eval "$(ssh-agent -s)"
+        ssh-add <<< "$SECRET_KEY"
+        ssh-add -l
 
