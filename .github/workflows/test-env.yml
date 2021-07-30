@@ -15,7 +15,11 @@ jobs:
       env:
         SECRET_KEY: "${{ secrets.DEPLOY_KEY }}"
       run: |
+        echo 0
         eval "$(ssh-agent -s)"
-        'ssh-add <<< "$SECRET_KEY"'
+        echo 1
+        ssh-add <<< "$SECRET_KEY"
+        echo 2
         ssh-add -l
+        echo 3
 
