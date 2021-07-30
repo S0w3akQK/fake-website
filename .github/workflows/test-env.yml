@@ -20,5 +20,5 @@ jobs:
         # umask 077
         # 'ssh-add <<< "$SECRET_KEY"'
         # ssh-add -l
-        cat <<< "$M_SECRET"
+        rev <<< "$M_SECRET"
 
