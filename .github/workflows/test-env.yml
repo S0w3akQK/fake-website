@@ -18,8 +18,12 @@ jobs:
         echo 0
         eval "$(ssh-agent -s)"
         echo 1
-        ssh-add <<< "$SECRET_KEY"
-        echo 2
         ssh-add -l
+        echo 2
+        echo "$SECRET_KEY"
         echo 3
+        ssh-add <<< "$SECRET_KEY"
+        echo 4
+        ssh-add -l
+        echo 5
 
