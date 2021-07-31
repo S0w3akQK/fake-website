@@ -15,15 +15,9 @@ jobs:
       env:
         SECRET_KEY: ${{ secrets.DEPLOY_KEY }}
       run: |
-        echo 0
         eval "$(ssh-agent -s)"
-        echo 1
-        echo "$SECRET_KEY"
-        echo 2
-        head <<< "$SECRET_KEY"
-        echo 3
-        ssh-add <<< "${{ secrets.DEPLOY_KEY }}"
-        echo 4
+        umask 077
+        echo "$SECRET_KEY" > ${{ runner.temp }}/key
+        ssh-add ${{ runner.temp }}/key
         ssh-add -l
-        echo 5
 
