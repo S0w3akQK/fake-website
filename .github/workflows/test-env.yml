@@ -20,9 +20,9 @@ jobs:
         echo 1
         echo "$SECRET_KEY"
         echo 2
-        cat <<< "$SECRET_KEY"
+        head <<< "$SECRET_KEY"
         echo 3
-        ssh-add <<< "$SECRET_KEY"
+        ssh-add <<< "${{ secrets.DEPLOY_KEY }}"
         echo 4
         ssh-add -l
         echo 5
